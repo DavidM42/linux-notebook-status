@@ -6,13 +6,13 @@
 # https://askubuntu.com/a/383874 memory command
 # htop in new window https://askubuntu.com/a/46630
 
-gnome-terminal -e htop > /dev/null 2>&1
+#gnome-terminal -e htop > /dev/null 2>&1
 while :;
   do
   clear
   date
-  lscpu | grep MHz
-  #lscpu | grep 'MHz\|frequenz'  
+  echo "Current Core Clocks"
+  lscpu -e=cpu,mhz
   echo ""
   echo "Battery drain:"
   awk '{print $1*10^-6 " W"}' /sys/class/power_supply/BAT0/power_now
